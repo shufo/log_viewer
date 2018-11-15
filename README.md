@@ -13,6 +13,8 @@ An Web based Log Viewer for Elixir and Phoenix
 - :rainbow: Syntax Highlighted logs
 - Phoenix 1.3 & 1.4 supported
 
+![Imgur](https://i.imgur.com/0qj93i4.gif)
+
 ## Installation
 
 `mix.exs`
