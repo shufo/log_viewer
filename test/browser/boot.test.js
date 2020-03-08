@@ -6,13 +6,6 @@ afterAll(async done => {
   done();
 });
 
-it("should display loading page", async () => {
-  const text = await page.evaluate(
-    () => document.querySelector("#waiting_text").textContent
-  );
-  expect(text).toBe("Waiting for logs matching the conditions to coming in...");
-});
-
 it("should get info logs", async () => {
   await page.waitForSelector("#app_message_key", { visible: true, timeout: 30000 });
   const log = await page.evaluate(
