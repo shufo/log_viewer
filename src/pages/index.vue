@@ -92,7 +92,7 @@
         </v-fab-transition>
         <v-card-text
           v-if="filteredLogs.length == 0">
-          <p>Waiting for logs matching the conditions to coming in...</p>
+          <p id="waiting_text">Waiting for logs matching the conditions to coming in...</p>
           <v-progress-circular
             indeterminate
             color="purple"/>
