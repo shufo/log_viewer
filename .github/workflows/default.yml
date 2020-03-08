@@ -11,12 +11,17 @@ jobs:
       matrix:
         otp: [21.3, 22.2]
         elixir: [1.8.2, 1.9.4]
+        node: ['10', '8']
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-elixir@v1
       with:
         otp-version: ${{matrix.otp}}
         elixir-version: ${{matrix.elixir}}
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+          node-version: ${{ matrix.node }}
     - run: mix deps.get
     - run: mix compile
     - name: Run Jest
