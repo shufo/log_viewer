@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "server": "mix run --no-halt"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "jest-puppeteer": "^4.4.0",
+    "puppeteer": "^2.1.1"
+  }
+}
