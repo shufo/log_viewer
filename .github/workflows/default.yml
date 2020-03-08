@@ -22,9 +22,32 @@ jobs:
       uses: actions/setup-node@v1
       with:
           node-version: ${{ matrix.node }}
-    - run: mix deps.get
+    # restore caches
+    - uses: actions/cache@v1
+      id: mix-cache 
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+        restore-keys: |
+          ${{ runner.os }}-mix-
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v1
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: install mix deps
+      if: steps.mix-cache.outputs.cache-hit != 'true'
+      run: mix deps.get
     - run: mix compile
-    - run: yarn install
+    - name: install npm modules
+      if: steps.yarn-cache.outputs.cache-hit != 'true'
+      run: yarn install
     - name: Run Jest
       run: |
         yarn jest
