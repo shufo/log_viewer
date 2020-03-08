@@ -12,6 +12,7 @@ defmodule LogViewer do
         supervisor(Registry, [[keys: :duplicate, name: :client_registry]])
       ]
       |> add_standalone_childs(standalone?)
+      |> add_test_childs(test?)
 
     opts = [strategy: :one_for_one, name: LogViewer.Supervisor]
     Supervisor.start_link(children, opts)
