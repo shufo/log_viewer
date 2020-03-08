@@ -22,6 +22,20 @@ defmodule LogViewer do
     Supervisor.start_link(children, opts)
   end
 
+  defp add_standalone_childs(childs, false = _standalone?), do: childs
+
+  defp add_standalone_childs(childs, true = _standalone?) do
+    childs ++
+      [worker(LogViewer.Server, [[port: Application.get_env(:log_viewer, :port, 5900)]])]
+  end
+
+  defp add_test_childs(childs, false = _test?), do: childs
+
+  defp add_test_childs(childs, true = _test?) do
+    childs ++
+      [supervisor(LogViewer.FakeLogger, [[]])]
+  end
+
   def info(term) do
     term |> inspect(pretty: true) |> Logger.info()
   end
