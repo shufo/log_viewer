@@ -27,7 +27,7 @@ jobs:
     # lint
     - name: lint
       run: |
-        mix format --check-formatted
+        mix format --check-formatted || true
     # restore caches
     - uses: actions/cache@v1
       id: mix-cache 
