@@ -26,4 +26,5 @@ jobs:
     - run: mix compile
     - run: yarn install
     - name: Run Jest
-      uses: stefanoeb/jest-action@1.0.2
+      run: |
+        yarn jest
