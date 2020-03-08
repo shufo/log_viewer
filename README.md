@@ -1,3 +1,5 @@
+![Tests](https://github.com/shufo/log_viewer/workflows/Tests/badge.svg)
+
 # LogViewer
 
 An Web based Log Viewer for Elixir and Phoenix
