@@ -13,7 +13,9 @@ jobs:
         elixir: [1.8.2, 1.9.4]
         node: ['10']
     steps:
+    # checkout
     - uses: actions/checkout@v2
+    # setup environments
     - uses: actions/setup-elixir@v1
       with:
         otp-version: ${{matrix.otp}}
