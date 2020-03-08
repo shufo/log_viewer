@@ -23,3 +23,5 @@ erl_crash.dump
 log_viewer-*.tar
 
 /.vscode/
+
+/node_modules
