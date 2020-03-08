@@ -1,4 +1,5 @@
 ![Tests](https://github.com/shufo/log_viewer/workflows/Tests/badge.svg)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=shufo/log_viewer)](https://dependabot.com)
 
 # LogViewer
 
