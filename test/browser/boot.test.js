@@ -14,7 +14,7 @@ it("should display loading page", async () => {
 });
 
 it("should get info logs", async () => {
-  await page.waitForSelector("#app_message_key", { visible: true });
+  await page.waitForSelector("#app_message_key", { visible: true, timeout: 30000 });
   const log = await page.evaluate(
     () => document.querySelector("#app_message_key").textContent
   );
