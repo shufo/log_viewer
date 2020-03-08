@@ -24,6 +24,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
           node-version: ${{ matrix.node }}
+    # lint
+    - name: lint
+      run: |
+        mix format --check-formatted
     # restore caches
     - uses: actions/cache@v1
       id: mix-cache 
