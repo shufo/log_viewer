@@ -5,18 +5,13 @@ defmodule LogViewer do
 
   def start(_type, _args) do
     standalone? = Application.get_env(:log_viewer, :standalone, true)
+    test? = Enum.any?(System.argv(), fn x -> x === "--test" end)
 
     children =
-      if standalone? do
-        [
-          worker(LogViewer.Server, [[port: Application.get_env(:log_viewer, :port, 5900)]]),
-          supervisor(Registry, [[keys: :duplicate, name: :client_registry]])
-        ]
-      else
-        [
-          supervisor(Registry, [[keys: :duplicate, name: :client_registry]])
-        ]
-      end
+      [
+        supervisor(Registry, [[keys: :duplicate, name: :client_registry]])
+      ]
+      |> add_standalone_childs(standalone?)
 
     opts = [strategy: :one_for_one, name: LogViewer.Supervisor]
     Supervisor.start_link(children, opts)
