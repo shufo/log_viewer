@@ -46,7 +46,9 @@
                 xs5
                 sm8
                 ellipsis>
-                <strong v-html="message.msg"/>
+                <strong 
+                  id="app_message_key" 
+                  v-html="message.msg"/>
               </v-flex>
               <v-spacer/>
               <v-flex
