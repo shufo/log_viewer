@@ -48,7 +48,6 @@ jobs:
       run: mix deps.get
     - run: mix compile
     - name: install npm modules
-      if: steps.yarn-cache.outputs.cache-hit != 'true'
       run: yarn install
     - name: Run Jest
       run: |
