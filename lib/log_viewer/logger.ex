@@ -112,7 +112,7 @@ defmodule LogViewer.Logger do
     }
   end
 
-  # seng log event
+  # send log event
   defp log_event(level, msg, ts, md, state) do
     {{year, month, day}, {hour, minute, second, millisecond}} = ts
 
