@@ -1,4 +1,5 @@
 {
   "preset": "jest-puppeteer",
-  "testMatch": ["**/*.test.js"]
+  "testMatch": ["**/*.test.js"],
+  "testTimeout": 30000
 }
