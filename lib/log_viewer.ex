@@ -1,10 +1,9 @@
 defmodule LogViewer do
   use Application
   require Logger
+  import Supervisor.Spec, warn: false
 
   def start(_type, _args) do
-    import Supervisor.Spec, warn: false
-
     standalone? = Application.get_env(:log_viewer, :standalone, true)
 
     children =
