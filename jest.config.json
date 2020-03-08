@@ -1,0 +1,4 @@
+{
+  "preset": "jest-puppeteer",
+  "testMatch": ["**/*.test.js"]
+}
