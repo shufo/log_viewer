@@ -30,7 +30,7 @@ defmodule LogViewer.MixProject do
       {:jason, ">= 0.0.0"},
       {:exsync, "~> 0.2", only: :dev},
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.21.3", only: :dev}
+      {:ex_doc, "~> 0.24.2", only: :dev}
     ]
   end
 
